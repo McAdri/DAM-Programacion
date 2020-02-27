@@ -1,6 +1,6 @@
 package Herencia;
 
-public class Visitante extends Usuario{
+public class Visitante extends NormalUser{
 
 	private int numeroVisitas;
 
@@ -9,8 +9,8 @@ public class Visitante extends Usuario{
 		this.numeroVisitas = 0;
 	}
 	
-	public Visitante(String nombre,String password,int numeroVisitas) {
-		super(nombre,password);
+	public Visitante(String nombre,String password,int numeroVisitas,int horas,Tipo tipo) {
+		super(nombre,password,horas,tipo);
 		this.numeroVisitas = numeroVisitas;
 	}
 	
@@ -25,5 +25,9 @@ public class Visitante extends Usuario{
 	@Override
 	public String toString(){
 		return "Usuario: " + this.getNombre()  + " lleva " + numeroVisitas + " visitas.";
+	}
+	
+	public void visita() {
+		this.numeroVisitas++;
 	}
 }

@@ -15,6 +15,8 @@ public class StartP12 {
 		
 		trabajadores[2] = new Trabajador("Matias","Prats",10000,45,Categoria.Arquitecto,5);
 		
+		trabajadores[2].cumple();
+		
 		trabajadores[3] = new Trabajador("Ignatius","Farray",10,45,Categoria.Junior,1);
 		
 		trabajadores[3].cumple();
@@ -32,6 +34,76 @@ public class StartP12 {
 		
 		/////Ejecución de la práctica
 		
+		
+		System.out.println("El gasto total es: " + gastoTotal(trabajadores));
+		
+		System.out.println("El sueldo neto medio es: " + sueldoNetoMedio(trabajadores));
+		
+		System.out.println("El numero medio de hijos es: " + numeroHijos(trabajadores));
+		
+		numeroTrabajadoresCategoria(trabajadores);
+		
+		System.out.println("El trabajador que mas cobra es: " + trabajadorMasCobra(trabajadores));
+		
+	}
+	
+	public static int gastoTotal(Trabajador[] trabajadores) {
+		int total = 0;
+		
+		for(int i=0;i<trabajadores.length;i++) {
+			total = total + trabajadores[i].sueldoBrutoMensual();
+		}
+		
+		return total;
+	}
+	
+	public static int sueldoNetoMedio(Trabajador[] trabajadores) {
+		int total = 0;
+		
+		for(int i=0;i<trabajadores.length;i++) {
+			total = total + trabajadores[i].getSueldoNeto();
+		}
+		
+		total = total / trabajadores.length;
+		return total;
+	}
+	
+	public static float numeroHijos(Trabajador[] trabajadores) {
+		float total = 0;
+		for(int i=0;i<trabajadores.length;i++) {
+			total += trabajadores[i].getNumeroHijos();
+		}
+		
+		total = total / trabajadores.length;
+		return total;
+	}
+	
+	public static void numeroTrabajadoresCategoria(Trabajador[] trabajadores) {
+		for(Categoria categoria:Categoria.values()) {
+			int contador = 0;
+			
+			for(int j=0;j<trabajadores.length;j++) {
+				if(categoria==trabajadores[j].getCategoria())
+					contador++;
+			}
+			
+			System.out.println("Hay " + contador + " empleados de la categoria " + categoria);
+			
+		}
+	}
+	
+	public static String trabajadorMasCobra(Trabajador[] trabajadores) {
+		String nombre = "";
+		int max = 0;
+		
+		for(int i=0;i<trabajadores.length;i++) {
+			if(max<trabajadores[i].getSueldoNeto()) {
+				max = trabajadores[i].getSueldoNeto();
+				nombre = trabajadores[i].getNombre() + " " + trabajadores[i].getApellidos();
+			}
+		}
+		
+		return nombre;
 	}
 
 }
