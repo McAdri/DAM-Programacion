@@ -1,14 +1,24 @@
 package Colegio;
 
-import java.util.Scanner;
-
 public class Alumno extends Persona{
 
 	private String curso;
 	private int nota;
+	private boolean extrasecolar;
+	private int dinero;
 	
 	public Alumno(String nombre,String apellidos) {
 		super(nombre,apellidos);
+		this.extrasecolar = false;
+		this.curso = "1FP";
+		calcularPrecio();
+	}
+	
+	public Alumno(String nombre,String apellidos,String curso,boolean extraescolar) {
+		super(nombre,apellidos);
+		this.curso = curso;
+		this.extrasecolar = extraescolar;
+		calcularPrecio();
 	}
 
 	public String getCurso() {
@@ -27,11 +37,32 @@ public class Alumno extends Persona{
 		this.nota = nota;
 	}
 	
-	public void califica() {
-		Scanner teclado = new Scanner(System.in);
+	public boolean isExtrasecolar() {
+		return extrasecolar;
+	}
+
+	public void setExtrasecolar(boolean extrasecolar) {
+		this.extrasecolar = extrasecolar;
+	}
+
+	public int getDinero() {
+		return dinero;
+	}
+	
+	private void calcularPrecio() {
+		if(this.curso.equals("1FP")) {
+			dinero = 350;
+		}else if(this.curso.equals("2FP")) {
+			dinero = 500;
+		}
 		
-		System.out.print("Introduzca la nota de " + getNombre() + " " + getApellidos() + ": ");
-		String calificacion = teclado.next();
+		if(isExtrasecolar()) {
+			dinero =(int) (dinero * 1.2);
+		}
+	}
+	
+	public void califica(String calificacion) {
+		
 		
 		switch (calificacion) {
 		case "S":
