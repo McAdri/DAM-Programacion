@@ -1,11 +1,12 @@
 package CapitalesClases;
 
-public class Pais {
+public class Pais{
 
-	public String pais;
-	public String capital;
+	private String pais;
+	private String capital;
 	
 	public Pais(String pais,String capital){
+		super();
 		this.pais = pais;
 		this.capital = capital;
 	}
@@ -23,5 +24,13 @@ public class Pais {
 		this.capital = capital;
 	}
 	
-	
+	@Override
+	public boolean equals(Object obj){
+		  if(this.pais.equals(((Pais) obj).pais)) {
+			  return true;
+		  }
+		  else {
+			  return false;
+		  }
+	}
 }

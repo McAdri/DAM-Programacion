@@ -13,6 +13,9 @@ public class Start {
 		paises.add(new Pais("España", "Madrid"));
 		paises.add(new Pais("Portugal", "Lisboa"));
 		
+		System.out.println(paises.contains(new Pais("Marruecos","Madrid")));
+		System.out.println(paises.indexOf(new Pais("Portugal","	Lisboa")));
+		
 		String pais;
 		do {
 			pais = pedirPais();
