@@ -13,28 +13,23 @@ public class Start {
 		paises.add(new Pais("España", "Madrid"));
 		paises.add(new Pais("Portugal", "Lisboa"));
 		
-		System.out.println(paises.contains(new Pais("Marruecos","Madrid")));
-		System.out.println(paises.indexOf(new Pais("Portugal","	Lisboa")));
+
+		System.out.println(paises.contains(new Pais("Portugal", "Lisboa")));
+		System.out.println(paises.indexOf(new Pais("Portugal","Lisboa")));
 		
 		String pais;
 		do {
 			pais = pedirPais();
 			int posicion = 0;
-			boolean encuentra = false;
-			while(!encuentra && posicion<paises.size()) {
-				if(paises.get(posicion).getPais().equals(pais)) {
-					encuentra = true;
-					System.out.println("la capital de " + pais + " es " + paises.get(posicion).getCapital());
-				}
-				else{
-					posicion++;
-				}
-			}
+			boolean encuentra = paises.contains(new Pais(pais,""));
+			posicion = paises.indexOf(new Pais(pais,""));
+			
 			
 			if(!encuentra) {
 				paises.add(new Pais(pais,pedirCapital("Lo siento, no conozco esa capital...\nMe la podrias decir???\"")));
 			}
 			else {
+				System.out.println("la capital de " + pais + " es " + paises.get(posicion).getCapital());
 				if(!imprime("¿Es correcta la capital?")) {
 					
 					paises.get(posicion).setCapital(pedirCapital("Introuzca el nuevo valor: "));
