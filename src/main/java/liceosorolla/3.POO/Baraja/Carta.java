@@ -31,6 +31,32 @@ public class Carta implements Comparable<Carta>{
 	public int getId() {
 		return id;
 	}
+	
+	public int valorCarta() {
+		int valor = 0;
+		
+		switch (numero) {
+		case As:
+			valor = 13;
+		break;
+		case Tres:
+			valor = 10;
+		break;
+		case Sota:
+			valor = 2;
+		break;
+		case Caballo:
+			valor = 3;
+		break;
+		case Rey:
+			valor = 4;
+		break;
+		
+		}
+		
+		
+		return valor;
+	}
 
 	@Override
 	public String toString() {

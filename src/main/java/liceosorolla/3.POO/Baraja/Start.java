@@ -43,6 +43,24 @@ public class Start {
 			System.out.println(baraja2.get(i).toString());
 		}
 		
+		System.out.println("---------");
+		System.out.println("Brisca!!!!!!");
+		
+		baraja.clear();
+		
+		int total = 0;
+		
+		for(int i=0;i<5;i++) {
+			int posicion = sacarCarta(baraja2.size());
+			baraja.add(baraja2.get(posicion));
+			baraja2.remove(posicion);
+			System.out.println(baraja.get(i).toString() + " vale " + baraja.get(i).valorCarta() + " puntos");
+			total += baraja.get(i).valorCarta();
+		}
+		
+		System.out.println("El valor total es " + total);
+		
+		
 	}
 	
 	public static int sacarCarta(int cartas) {
